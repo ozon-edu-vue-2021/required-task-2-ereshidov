@@ -1,15 +1,17 @@
 <template>
   <div>
-    <div>&#128193; {{ name }}</div>
-    <Item
-      v-for="(item, i) in contents"
-      :key="`${item.name}-${i}`"
-      :contents="item.contents"
-      :target="item.target"
-      :name="item.name"
-      :type="item.type"
-      :indent="indent"
-    />
+    <div class="folder" @click="toggleFolder">&#128193; {{ name }}</div>
+    <div v-if="opened === true">
+      <Item
+        v-for="(item, i) in contents"
+        :key="`${item.name}-${i}`"
+        :contents="item.contents"
+        :target="item.target"
+        :name="item.name"
+        :type="item.type"
+        :indent="indent"
+      />
+    </div>
   </div>
 </template>
 
@@ -27,14 +29,25 @@ export default Vue.extend({
       default: () => [],
     },
     indent: {
-      type: String
-    }
+      type: String,
+    },
   },
+  data: () => ({
+    opened: false,
+  }),
   components: {
-    Item: () => import('./Item.vue'),
+    Item: () => import("./Item.vue"),
+  },
+  methods: {
+    toggleFolder() {
+      this.opened = !this.opened;
+    },
   },
 });
 </script>
 
 <style scoped>
+.folder {
+  cursor: pointer;
+}
 </style>
