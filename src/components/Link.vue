@@ -1,5 +1,5 @@
 <template>
-  <div>&#128279; <a v-bind:href="target">{{name}}</a></div>
+  <div data-type="link">&#128279; {{ name }}</div>
 </template>
 
 <script>
@@ -12,8 +12,8 @@ export default Vue.extend({
       type: String,
     },
     target: {
-      type: String
-    }
+      type: String,
+    },
   },
 });
 </script>

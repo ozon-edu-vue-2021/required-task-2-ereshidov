@@ -2,7 +2,7 @@
   <div>
     <div class="folder" @click="toggleFolder">&#128193; {{ name }}</div>
     <div v-if="opened === true">
-      <Item
+      <item
         v-for="(item, i) in contents"
         :key="`${item.name}-${i}`"
         :contents="item.contents"
@@ -17,6 +17,7 @@
 
 <script>
 import Vue from "vue";
+import Item from './Item.vue'
 
 export default Vue.extend({
   name: "Folder",
@@ -29,14 +30,14 @@ export default Vue.extend({
       default: () => [],
     },
     indent: {
-      type: String,
+      type: Number,
     },
   },
   data: () => ({
     opened: false,
   }),
   components: {
-    Item: () => import("./Item.vue"),
+    Item,
   },
   methods: {
     toggleFolder() {

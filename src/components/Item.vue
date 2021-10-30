@@ -33,8 +33,8 @@ export default Vue.extend({
       type: String,
     },
     indent: {
-      type: String,
-      default: "10",
+      type: Number,
+      default: 10,
     },
   },
   computed: {

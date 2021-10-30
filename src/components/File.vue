@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ clicked }" @click="handleFileClick">&#128441; {{ name }}</div>
+  <div data-type="file" :class="{ clicked }">&#128441; {{ name }}</div>
 </template>
 
 <script>
@@ -16,9 +16,6 @@ export default Vue.extend({
     clicked: false,
   }),
   methods: {
-    handleFileClick() {
-      this.clicked = true;
-    },
   },
 });
 </script>
